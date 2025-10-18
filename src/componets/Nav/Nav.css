@@ -1,0 +1,25 @@
+.nav {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+.ul {
+  display: flex;
+  flex-direction: row;
+  width: 50vh;
+  background-color: bisque;
+  border-radius: 20vh;
+  justify-content: center;  
+  color: black;
+}
+.li:hover{
+padding: 5px;
+border-radius: 20px;
+border: solid 1px;
+}
+.li {
+  margin: 2%;
+  list-style: none;
+}
+.li a{  color: inherit;}
+
