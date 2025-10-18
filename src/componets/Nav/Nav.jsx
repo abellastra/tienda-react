@@ -5,7 +5,7 @@ import { useCardContext } from "../../context/cartContext/useCardContx";
 export const Nav=()=>{
 
   const {getTotalItems}=  useCardContext()
-
+console.log(getTotalItems)
     return (
       <nav className="nav">
         {" "}
@@ -20,10 +20,10 @@ export const Nav=()=>{
           <li className="li">
             <Link to={"/category/salado"}>Salado</Link>
           </li>
-          <li className='li'>
-            <Link >carrito</Link>
+          <li className="li">
+            <Link>carrito</Link>
+            {getTotalItems() > 0 && <span className="">{getTotalItems()}</span>}
           </li>
-          {getTotalItems > 0 && <span className="">{getTotalItems()}</span>}
         </ul>
       </nav>
     );

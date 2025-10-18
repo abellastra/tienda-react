@@ -2,17 +2,17 @@ import { useState } from "react";
 import { CardContext } from "./CardContext";
 
 export const CardProvider = ({ children }) => {
-  const [card, setCard] = useState();
+  const [card, setCard] = useState([]);
   const exist = (id) => {
-    const exist = card.some((p = p.id === id));
-    return;
+    const exist = card.some((p) => p.id === id);
+    return exist;
   };
   const addItem = (item) => {
     if (exist(item.id)) {
       alert("El producto ya existe en el carrito");
       return;
     }
-    setCard(...card, item);
+    setCard([...card, item]);
     alert(`${item.name} agregado`);
   };
   const clearCard = () => {
@@ -25,12 +25,10 @@ export const CardProvider = ({ children }) => {
     }
   };
 
-  const values = {
-    card,
-    addItem,
-    clearCard,
-    getTotalItems,
-  };
 
-  return <CardContext.Provider value={{values}}>{children}</CardContext.Provider>;
+  return (
+    <CardContext.Provider value={{ card, addItem, clearCard, getTotalItems }}>
+      {children}
+    </CardContext.Provider>
+  );
 };
