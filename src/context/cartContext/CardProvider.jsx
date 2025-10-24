@@ -9,11 +9,19 @@ export const CardProvider = ({ children }) => {
   };
   const addItem = (item) => {
     if (exist(item.id)) {
-      alert("El producto ya existe en el carrito");
-      return;
+      const upDatedCard = card.map((prod) => {
+        if (prod.id === item.id) {
+          return { ...prod, quantity: prod.quantity + item.quantity };
+        } else {
+          return prod;
+        }
+      });
+      setCard(upDatedCard);
+      alert("product add");
+    } else {
+      setCard([...card, item]);
+      alert(`${item.name}agregado`);
     }
-    setCard([...card, item]);
-    alert(`${item.name} agregado`);
   };
   const clearCard = () => {
     setCard([]);
@@ -24,7 +32,6 @@ export const CardProvider = ({ children }) => {
       return card.length;
     }
   };
-
 
   return (
     <CardContext.Provider value={{ card, addItem, clearCard, getTotalItems }}>
