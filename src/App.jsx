@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ItemListContainer } from "./componets/ItemListContainer/ItemListContainer";
 import { ItemDetailContainer } from "./componets/ItemDetailContainer/ItemDetailContainer";
 import { CardProvider } from "./context/cartContext/CardProvider";
-import { Cart } from "./componets/Cart/cart";
+import { Cart } from "./componets/Cart/Cart";
 import { Header } from "./componets/header/Header";
 import { MainLayout } from "./layouts/MiniLayout";
 import { Rutaprotegida } from "./componets/RutaProtegida/RutaProtegida";
