@@ -1,10 +1,5 @@
 import { useState } from "react";
-
-type prors={
-    
-}
-
-export const Count = ({ btnText, onConfirm }) => {
+export const Count = ({ btnText, onConfirm }: any) => {
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount((prev) => prev + 1);

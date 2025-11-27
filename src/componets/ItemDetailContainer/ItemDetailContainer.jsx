@@ -6,7 +6,7 @@ export const ItemDetailContainer = () => {
   const { id } = useParams();
   console.log(typeof id);
   useEffect(() => {
-    fetch("/data/products.json")
+    fetch("https://692095db31e684d7bfcd9050.mockapi.io/products")
       .then((res) => {
         if (!res) {
           throw new Error("no se encontro el producto");
@@ -15,6 +15,7 @@ export const ItemDetailContainer = () => {
       })
       .then((data) => {
         const found = data.find((prod) => prod.id === id);
+        console.log(found);
         if (found) {
           setDetail(found);
         } else {

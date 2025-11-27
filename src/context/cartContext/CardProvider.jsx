@@ -3,10 +3,12 @@ import { CardContext } from "./CardContext";
 
 export const CardProvider = ({ children }) => {
   const [card, setCard] = useState([]);
+
   const exist = (id) => {
     const exist = card.some((p) => p.id === id);
     return exist;
   };
+
   const addItem = (item) => {
     if (exist(item.id)) {
       const upDatedCard = card.map((prod) => {
@@ -16,6 +18,7 @@ export const CardProvider = ({ children }) => {
           return prod;
         }
       });
+
       setCard(upDatedCard);
       alert("product add");
     } else {
@@ -23,19 +26,38 @@ export const CardProvider = ({ children }) => {
       alert(`${item.name}agregado`);
     }
   };
+
+  const deleteItem = (id) => {
+    const filtered = card.filter((p) => p.id !== id);
+    setCard(filtered);
+    alert("producto eliminado");
+  };
+
   const clearCard = () => {
     setCard([]);
   };
 
   const getTotalItems = () => {
-    if (card.length) {
-      return card.length;
-    }
+    const totalItems = card.reduce((acc, p) => acc + p.quantity, 0);
+    return totalItems;
   };
 
-  return (
-    <CardContext.Provider value={{ card, addItem, clearCard, getTotalItems }}>
-      {children}
-    </CardContext.Provider>
-  );
+  const total = () => {
+    const total = card.reduce((acc, p) => acc + p.price * p.quantity, 0);
+    return Math.round(total * 100) / 100;
+  };
+  const chechout = () => {
+    const ok = confirm("¿quieres finalizar a compra ?");
+    clearCard();
+  };
+  const value = {
+    card,
+    addItem,
+    clearCard,
+    getTotalItems,
+    deleteItem,
+    total,
+    chechout,
+  };
+  return <CardContext.Provider value={value}>{children}</CardContext.Provider>;
 };

@@ -6,3 +6,9 @@ a {
 a:hover {
   color: #ff6600;
 }
+.item-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}

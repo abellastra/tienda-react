@@ -1,8 +1,6 @@
-import { useContext } from "react"
-import { CardContext } from "./CardContext"
+import { useContext } from "react";
+import { CardContext } from "./CardContext";
 
-export const useCardContext=()=>{
-    return(
-        useContext(CardContext)
-    )
-}
+export const useCardContext = () => {
+  return useContext(CardContext);
+};
